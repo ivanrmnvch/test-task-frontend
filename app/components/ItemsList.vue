@@ -39,14 +39,16 @@ const handleSelect = (item: Item) => {
 
 <style scoped lang="scss">
 .items-list {
-  @apply border-2 border-black p-4 min-h-[300px];
+  @apply border-2 border-black p-3 sm:p-4 min-h-[200px] sm:min-h-[250px];
+  @apply bg-white;
+  @apply transition-opacity duration-200;
 
   &--disabled {
-    @apply opacity-70;
+    @apply opacity-60;
   }
 
   &__grid {
-    @apply grid grid-cols-4 gap-2;
+    @apply grid grid-cols-4 gap-1 sm:gap-2;
   }
 }
 </style>
