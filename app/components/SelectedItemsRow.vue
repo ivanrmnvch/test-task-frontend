@@ -9,12 +9,26 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   maxItems: 6,
 })
+
+const emit = defineEmits<{
+  remove: [item: Item]
+}>()
+
+const handleRemove = (item: Item) => {
+  emit('remove', item)
+}
 </script>
 
 <template>
   <div class="selected-items-row">
     <div class="selected-items-row__items">
-      <ItemBox v-for="item in items" :key="item.id" :item="item" :clickable="false" />
+      <ItemBox
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
+        :clickable="true"
+        @click="handleRemove"
+      />
       <div
         v-for="n in Math.max(0, maxItems - items.length)"
         :key="`empty-${n}`"

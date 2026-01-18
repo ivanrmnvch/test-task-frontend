@@ -6,11 +6,19 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const emit = defineEmits<{
+  remove: [item: Item]
+}>()
+
+const handleRemove = (item: Item) => {
+  emit('remove', item)
+}
 </script>
 
 <template>
   <div class="selected-single-item">
-    <ItemBox v-if="item" :item="item" size="large" :clickable="false" />
+    <ItemBox v-if="item" :item="item" size="large" :clickable="true" @click="handleRemove" />
     <div v-else class="selected-single-item__placeholder">
       <span class="selected-single-item__placeholder-text">SELECTED ITEM</span>
     </div>

@@ -11,8 +11,12 @@ const store = useSelectionStore()
 
     <!-- Верхняя часть: выбранные вещи -->
     <section class="page__top">
-      <SelectedItemsRow :items="store.selectedUserItems" :max-items="6" />
-      <SelectedSingleItem :item="store.selectedChoiceItem" />
+      <SelectedItemsRow
+        :items="store.selectedUserItems"
+        :max-items="6"
+        @remove="store.toggleUserItem"
+      />
+      <SelectedSingleItem :item="store.selectedChoiceItem" @remove="store.toggleChoiceItem" />
     </section>
 
     <!-- Нижняя часть: списки вещей -->
